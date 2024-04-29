@@ -327,10 +327,3 @@ function updateIconState(icon, isChecked) {
         icon.classList.remove("active"); 
     }
 }
-
-
-
-
-
-
-

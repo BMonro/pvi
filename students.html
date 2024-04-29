@@ -91,7 +91,7 @@
                 
                 <div class="main-element">
                     <h2 class="page-name">Student</h2>
-                    <div button="add-new-student" class="add-new-student"  data-id="" onclick="openAddDialog()"> 
+                    <div button="add-new-student" class="add-new-student"  onclick="openAddDialog()"> 
                         <i class="bi bi-plus-square"></i>
                     </div>
 
@@ -112,12 +112,12 @@
                             <div>
                                 <label for="name">Name</label>
                                 <input type="text" id="name">
-                                <p class="error" id="nameError"></p> 
+                                <p class="error" id="nameError"></p> <!-- Додано помилку для імені -->
                             </div>
                             <div>
                                 <label for="surname">Surname</label>
                                 <input type="text" id="surname">
-                                <p class="error" id="surnameError"></p> 
+                                <p class="error" id="surnameError"></p> <!-- Додано помилку для прізвища -->
                             </div>
                             <div>
                                 <label for="gender">Gender</label>
@@ -130,7 +130,7 @@
                             <div>
                                 <label for="birthday">Birthday</label>
                                 <input type="date" id="birthday">
-                                <p class="error" id="birthdayError"></p> 
+                                <p class="error" id="birthdayError"></p> <!-- Додано помилку для дати народження -->
                             </div>
                             <div class="dialogButton">
                                 <p><button id="OkButton" type="submit">Ok</button></p>
