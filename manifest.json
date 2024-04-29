@@ -1,0 +1,28 @@
+{
+    "name": "CMS",
+    "short_name": "CMS",
+    "start_url": ".",
+    "background_color": "#342f29",
+    "theme_color": "#342f29",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

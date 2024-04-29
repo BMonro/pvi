@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>student</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+        
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#342f29">
+        <link rel="apple-touch-icon" href="icons/logo.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    </head>
+
+    <body>
+        
+
+        <header class="top-menu">
+            <nav>
+                <div class="left-top-side">
+                    <div class="hamburger-menu">
+                        <div class="hamburger-icon"><i class="bi bi-list"></i></div>
+                        <ul class="menu-items">
+                            <div class="items">
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="students.html">Student</a></li>
+                            <li><a href="tasks.html">Tasks</a></li>
+                        </div> 
+                        </ul>
+                    </div>
+                    <div class="logo">CMS</div>  
+                </div>
+
+                <div class ="top-board">
+                    <ul>
+                        <li>
+                            <a href="messages.html">
+                                <i class="bi bi-bell-fill"><span class="dot"></span></i>
+                            </a>
+                            <ul id="bell">
+                                <li>
+                                    <a href="#">
+                                        <div class="user-message">
+                                            <div class="account">
+                                                <img src="images/icon.jpg" alt="profile photo" class="icon-image">
+                                                <div class="user">Anna</div>
+                                            </div>
+                                            <div class="mess">Hi!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user-message">
+                                            <div class="account">
+                                                <img src="images/icon.jpg" alt="profile photo" class="icon-image">
+                                                <div class="user">Taras</div>
+                                            </div>
+                                            <div class="mess">Hi!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                            
+                        <li><a href="#"><img src="images/icon.jpg" alt="profile photo" class="icon-image"><div class="user-name">Burtnyk Marta</div> </a>
+                            <ul>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Log Out</a></li>
+                            </ul>
+                        </li>       
+                    </ul>
+                </div>
+            </nav>
+         </header>
+
+        <div class="container">
+
+                <div class="side-menu">
+                    <div class="div-type">
+                        <ul>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="students.html">Student</a></li>
+                            <li><a  href="tasks.html">Tasks</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="main-element">
+                    <h2 class="page-name">Student</h2>
+                    <div button="add-new-student" class="add-new-student"  onclick="openAddDialog()"> 
+                        <i class="bi bi-plus-square"></i>
+                    </div>
+
+                    <dialog id="myModal">
+                        <form>
+                            <input id="formId" type="hidden">
+                            <h3 class="dialogHeader"></h3>
+                            <div>
+                                <label for="group">Group</label>
+                                <select id="group">
+                                    <option value="PZ-21">PZ-21</option>
+                                    <option value="PZ-22">PZ-22</option>
+                                    <option value="PZ-23">PZ-23</option>
+                                    <option value="PZ-24">PZ-24</option>
+                                    <option value="PZ-25">PZ-25</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="name">Name</label>
+                                <input type="text" id="name">
+                                <p class="error" id="nameError"></p> <!-- Додано помилку для імені -->
+                            </div>
+                            <div>
+                                <label for="surname">Surname</label>
+                                <input type="text" id="surname">
+                                <p class="error" id="surnameError"></p> <!-- Додано помилку для прізвища -->
+                            </div>
+                            <div>
+                                <label for="gender">Gender</label>
+                                <select id="gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="birthday">Birthday</label>
+                                <input type="date" id="birthday">
+                                <p class="error" id="birthdayError"></p> <!-- Додано помилку для дати народження -->
+                            </div>
+                            <div class="dialogButton">
+                                <p><button id="OkButton" type="submit">Ok</button></p>
+                                <p><button onclick="closeDialog()">Close</button></p>
+                            </div>
+                        </form>
+                    </dialog>
+                    
+                    
+    
+                    <div class="div-table">
+                        <div class="table-wrapper">
+                        <div class="outer-wrapper"></div>
+                        <table>
+                            <tr>
+                                <th><input id = "mainCheckbox" class="form-check-input mainCheckbox-active" type="checkbox"></th>
+                                <th>Group</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Birthday</th>
+                                <th>Status</th>
+                                <th>Options</th>
+                            </tr>
+
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td>PZ-21</td>
+                                <td>Burtnyk Marta</td>
+                                <td>F</td>
+                                <td>16.06.2005</td>
+                                <td><i class="bi bi-circle-fill"></i></td>
+                                <td>
+                                    <ul>
+                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td>PZ-25</td>
+                                <td>Shportko Taras</td>
+                                <td>M</td>
+                                <td>28.05.2005</td>
+                                <td><i class="bi bi-circle-fill"></i></td>
+                                <td>
+                                    <ul>
+                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td>PZ-21</td>
+                                <td>Burtnyk Iryna</td>
+                                <td>F</td>
+                                <td>14.05.2005</td>
+                                <td><i class="bi bi-circle-fill"></i></td>
+                                <td>
+                                    <ul>
+                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+    
+                    <div class="pagination">
+                        <ul>
+                            <li><a href="#" class="prev"><</a></li>
+                            <li class="pagenumber"><a aria-label="1" href="#">1</a></li>
+                            <li class="pagenumber"><a aria-label="2" href="#">2</a></li>
+                            <li class="pagenumber"><a aria-label="3" href="#">3</a></li>
+                            <li class="pagenumber"><a aria-label="4" href="#">4</a></li>
+                            <li><a href="#"class="next">></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <script src="script.js"></script>
+            
+    </body>
+</html>
