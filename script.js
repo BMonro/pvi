@@ -20,6 +20,7 @@ hamburgerIcon.addEventListener('click', function() {
 applyDeleteButtonListener();
 
 
+
 let dialog = document.querySelector('dialog');
 let formid = document.querySelector("#formId");
 let header = document.querySelector(".dialogHeader");
@@ -81,6 +82,7 @@ let row;
         dialog.close();
     }
 
+
     document.querySelector('form').addEventListener('submit', function(event) {
 
         validation();
@@ -100,8 +102,6 @@ let row;
     
     
 
-    
-
 /*----------------------------------------------------------------*/
 function editStudent(row) { 
     let group = document.querySelector("#group").value;
@@ -110,13 +110,12 @@ function editStudent(row) {
     let gender = document.querySelector("#gender").value;
     let birthday = document.querySelector("#birthday").value;
    
-    console.log(`${row}`);
     if (row) {
         row.cells[1].textContent = group;
         row.cells[2].textContent = surname + ' ' + name; 
         row.cells[3].textContent = gender;
-        row.cells[4].textContent = birthday;
-        console.log("dddddddddddddddddd")
+        row.cells[4].textContent = transformDateFormat(birthday);
+
         closeDialog();
         applyDeleteButtonListener(); 
     }
@@ -160,11 +159,13 @@ function addNewStudent() {
     let cell6 = newRow.insertCell(5);
     let cell7 = newRow.insertCell(6);
 
+    
+
     cell1.innerHTML = '<input class="form-check-input" type="checkbox">';
     cell2.textContent = group;
     cell3.textContent = surname + ' ' + name; 
     cell4.textContent = gender;
-    cell5.textContent = birthday;
+    cell5.textContent = transformDateFormat(birthday);
     cell6.innerHTML = '<i class="bi bi-circle-fill"></i>';
     cell7.innerHTML = '<ul><li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li><li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></a></li></ul>';
 
@@ -257,6 +258,17 @@ function validation(){
         birthday.style.borderColor = '';
     }
 }
+
+function transformDateFormat(dateString) {
+    let dateObject = new Date(dateString);
+
+    let day = dateObject.getDate();
+    let month = dateObject.getMonth() + 1;
+    let year = dateObject.getFullYear();
+
+    return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
+}
+
 
 
 
