@@ -37,13 +37,13 @@ let row;
 
     function openEditDialog(event) {
         header.textContent = "Edit student";
-        formid.value = "1";
+        let studentId = event.target.closest("tr").dataset.id;
+        formid.value = studentId;
         dialog.showModal();
         document.querySelector('form').reset();
-
-        row = event.target.closest("tr"); 
-        console.log(`row:${row}`);
-
+    
+        row = document.querySelector(`tr[data-id="${studentId}"]`); 
+    
         if (row) {
             let cell2 = row.cells[1];
             let cell3 = row.cells[2];
@@ -56,23 +56,24 @@ let row;
             document.querySelector("#gender").value = cell4.textContent;
             
             let dateParts = cell5.textContent.split('.');
-        if (dateParts.length === 3) {
-            let day = parseInt(dateParts[0], 10);
-            let month = parseInt(dateParts[1], 10) - 1; 
-            let year = parseInt(dateParts[2], 10);
-
-            let date = new Date(year, month, day);
-            if (!isNaN(date.getTime())) {
-                let formattedDate = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
-                document.querySelector("#birthday").value = formattedDate;
+            if (dateParts.length === 3) {
+                let day = parseInt(dateParts[0], 10);
+                let month = parseInt(dateParts[1], 10) - 1; 
+                let year = parseInt(dateParts[2], 10);
+    
+                let date = new Date(year, month, day);
+                if (!isNaN(date.getTime())) {
+                    let formattedDate = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+                    document.querySelector("#birthday").value = formattedDate;
+                } else {
+                    console.error("Invalid date format:", cell5.textContent);
+                }
             } else {
                 console.error("Invalid date format:", cell5.textContent);
             }
-        } else {
-            console.error("Invalid date format:", cell5.textContent);
-        }
         }
     }
+    
     
     document.querySelector('.edit-student').addEventListener('click', openEditDialog);
 
@@ -102,7 +103,7 @@ let row;
     
 
 /*----------------------------------------------------------------*/
-function editStudent(row) { // Передайте row
+function editStudent(row) { 
     let group = document.querySelector("#group").value;
     let name = document.querySelector("#name").value;
     let surname = document.querySelector("#surname").value;
@@ -122,7 +123,6 @@ function editStudent(row) { // Передайте row
 }
 
 
-
 function addNewStudent() {
     let table = document.querySelector(".div-table table");
     let tbody = table.querySelector('tbody');
@@ -131,6 +131,7 @@ function addNewStudent() {
         console.error("TBody not found.");
         return;
     }
+
     let group = document.querySelector("#group").value;
     let name = document.querySelector("#name").value;
     let surname = document.querySelector("#surname").value;
@@ -144,6 +145,12 @@ function addNewStudent() {
         gender: gender,
         birthday: birthday
     };
+
+    let lastStudentId = parseInt(tbody.lastElementChild.dataset.id || 0); 
+    let newStudentId = lastStudentId + 1; 
+
+    let newRow = tbody.insertRow(); 
+    newRow.dataset.id = newStudentId;
 
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);
@@ -160,13 +167,13 @@ function addNewStudent() {
     cell5.textContent = birthday;
     cell6.innerHTML = '<i class="bi bi-circle-fill"></i>';
     cell7.innerHTML = '<ul><li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li><li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></a></li></ul>';
-    
-    let newData = `Group: ${group}, Name: ${name}, Surname: ${surname}, Gender: ${gender}, Birthday: ${birthday}`;
+
     sendDataToServer(data);
     
     closeDialog();
     applyDeleteButtonListener();
 }
+
 
 
 function deleteStudent() {
