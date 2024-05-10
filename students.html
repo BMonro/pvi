@@ -91,7 +91,7 @@
                 
                 <div class="main-element">
                     <h2 class="page-name">Student</h2>
-                    <div button="add-new-student" class="add-new-student"  onclick="openAddDialog()"> 
+                    <div button="add-new-student" class="add-or-edit" data-id=""> 
                         <i class="bi bi-plus-square"></i>
                     </div>
 
@@ -102,11 +102,11 @@
                             <div>
                                 <label for="group">Group</label>
                                 <select id="group">
-                                    <option value="PZ-21">PZ-21</option>
-                                    <option value="PZ-22">PZ-22</option>
-                                    <option value="PZ-23">PZ-23</option>
-                                    <option value="PZ-24">PZ-24</option>
-                                    <option value="PZ-25">PZ-25</option>
+                                    <option>PZ-21</option>
+                                    <option>PZ-22</option>
+                                    <option>PZ-23</option>
+                                    <option>PZ-24</option>
+                                    <option>PZ-25</option>
                                 </select>
                             </div>
                             <div>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="dialogButton">
                                 <p><button id="OkButton" type="submit">Ok</button></p>
-                                <p><button onclick="closeDialog()">Close</button></p>
+                                <p><button class="close-button">Close</button></p>
                             </div>
                         </form>
                     </dialog>
@@ -164,7 +164,7 @@
                                 <td><i class="bi bi-circle-fill"></i></td>
                                 <td>
                                     <ul>
-                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li class="add-or-edit" data-id="1"><a href="#"><i class="bi bi-pencil-square"></i></a></li>
                                         <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
                                     </ul>
                                 </td>
@@ -179,7 +179,7 @@
                                 <td><i class="bi bi-circle-fill"></i></td>
                                 <td>
                                     <ul>
-                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li class="add-or-edit" data-id="2"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
                                         <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
                                     </ul>
                                 </td>
@@ -194,7 +194,7 @@
                                 <td><i class="bi bi-circle-fill"></i></td>
                                 <td>
                                     <ul>
-                                        <li class="edit-student" onclick="openEditDialog(event)"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
+                                        <li class="add-or-edit" data-id="3"><a href="#"><i class="bi bi-pencil-square" ></i></a></li>
                                         <li><a href="#" class="delete-row"><span></span><i class="bi bi-x-square"></i></i></a></li>
                                     </ul>
                                 </td>
@@ -205,7 +205,7 @@
     
                     <div class="pagination">
                         <ul>
-                            <li><a href="#" class="prev"><</a></li>
+                            <li><a href="#" class="prev">&lt;</a></li>
                             <li class="pagenumber"><a aria-label="1" href="#">1</a></li>
                             <li class="pagenumber"><a aria-label="2" href="#">2</a></li>
                             <li class="pagenumber"><a aria-label="3" href="#">3</a></li>

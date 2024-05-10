@@ -1,4 +1,4 @@
-self.addEventListener("install", (e) => {
+/*self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open("static").then(cache => {
             return cache.addAll(["./styles.css","./students.html","./icons/logo.png","./images/background.jpg","./images/icon.jpg"]);
@@ -36,4 +36,4 @@ self.addEventListener("fetch", e => {
             })
     );
 
-});
+});*/
